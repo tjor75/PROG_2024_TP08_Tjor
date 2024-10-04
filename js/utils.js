@@ -21,7 +21,7 @@ const resultado = document.getElementById("resultado");
 
 function pedirCadenaContenido(mensaje) {
     let cadena = prompt(mensaje);
-    while (typeof cadena === "undefined" || cadena === "")
+    while (cadena === null)
         cadena = prompt(mensaje + "\nERROR: El ingreso no puede ser vacío.");
     return cadena;
 }
@@ -64,7 +64,7 @@ function pedirLista(mensaje, accionExtra=ingreso => ingreso, condicionExtra=ingr
     let lista = [];
     let ingreso = prompt(mensaje + ADVERTENCIA);
     
-    while(typeof ingreso !== "undefined" && ingreso !== "") {
+    while(ingreso !== null) {
         ingreso = accionExtra(ingreso);
         if (!condicionExtra(ingreso)) {
             ingreso = prompt(mensaje + ADVERTENCIA + "\nERROR: " + errorCondicionExtra);
